@@ -1,7 +1,28 @@
-public class MyLinkedList implements MyList{
+public class MyLinkedList<T> implements MyList{
+
+    // head is the starting instance of MyLinkedList
+    private Node<T> head;
+    private int size;
+
+    // Linked List instance contains a value and a reference to the next value
+    // We need a custom datatype to contain such behaviour
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+        Node(T data) {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    public MyLinkedList() {
+        // head is always null, because there is no previous value to get reference
+        head = null;
+        size = 0;
+    }
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
