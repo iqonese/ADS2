@@ -69,7 +69,13 @@ public class MyArrayList<T> implements MyList {
 
 
     public int indexOf(Object o) {
-        return 0;
+        // If the object we are looking is present, we return i, otherwise error int -1
+        for (int i = 0; i < size; i ++) {
+            if (arr[i] == o) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 
