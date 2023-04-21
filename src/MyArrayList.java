@@ -46,17 +46,41 @@ public class MyArrayList<T> implements MyList {
 
 
     public void add(Object item, int index) {
-
+        checkIndex(index);
+        if (size == arr.length) {
+            T[] newArray = (T[]) new Object[arr.length * 2];
+            // built-in arraycopy method to slice and merge an array
+            System.arraycopy(arr, 0, newArray, 0, size);
+            arr = newArray;
+        }
     }
 
 
     public boolean remove(Object item) {
+        for (int i = 0; i < size; i++) {
+            if (arr[i].equals(item)) {
+                System.arraycopy(arr, i + 1, arr, i, size - i - 1);
+                // last element of the array gets deleted
+                arr[size - 1] = null;
+                // fix the size
+                size--;
+                return true;
+            }
+        }
+        // base case if there is no element to remove
         return false;
     }
 
 
     public Object remove(int index) {
-        return null;
+        checkIndex(index);
+        Object removedItem = arr[index];
+        // built-in method to slice, manipulate and merge an array
+        System.arraycopy(arr, index + 1, arr, index, size - index - 1);
+        arr[size - 1] = null;
+        // fix the size
+        size--;
+        return removedItem;
     }
 
     public void clear(){
