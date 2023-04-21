@@ -42,7 +42,6 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public void add(Object item) {
-
     }
 
     @Override
@@ -77,7 +76,19 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        // default index if there is no o in the list
+        int index  = -1;
+        int i = 0;
+        Node<T> current = head;
+        while(current != null) {
+            if (current.data.equals(o)) {
+
+                index = i;
+            }
+            current = current.next;
+            i ++;
+        }
+        return index;
     }
 
     @Override
