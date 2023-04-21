@@ -18,17 +18,18 @@ public class MyArrayList<T> implements MyList {
         return arr[index];
     }
 
-    public int getSize() {
+
+    public int size() {
         return size;
     }
 
 
-    public int size() {
-        return 0;
-    }
-
-
     public boolean contains(Object o) {
+        for (int i = 0; i < size; i ++) {
+            if (arr[i] == o) {
+                return true;
+            }
+        }
         return false;
     }
 
