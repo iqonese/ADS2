@@ -68,7 +68,14 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public Object get(int index) {
-        return null;
+        checkIndex(index);
+        Node<T> current = head;
+
+        // iterate until we reach the provided index
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.data;
     }
 
     @Override
