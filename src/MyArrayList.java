@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyArrayList<T> implements MyList {
     private T[] arr;
     private int size;
@@ -93,7 +95,7 @@ public class MyArrayList<T> implements MyList {
 
 
     public void sort() {
-
+        Arrays.sort(arr);
     }
 
     public void delete(int index){
