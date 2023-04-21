@@ -51,6 +51,27 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public boolean remove(Object item) {
+        // base case, if there is no head, nothing to remove
+        if (head == null) {
+            return false;
+        }
+        // base case, if the head is the item, we shift the head to the next item in the list
+        if (head.data.equals(item)) {
+            head = head.next;
+            size--;
+            return true;
+        }
+        // clone the list to temporary current to track and iterate over each instance
+        Node<T> current = head;
+        while (current.next != null) {
+            if (current.next.data.equals(item)) {
+                current.next = current.next.next;
+                size--;
+                return true;
+            }
+            current = current.next;
+        }
+        // no match found
         return false;
     }
 
@@ -70,7 +91,7 @@ public class MyLinkedList<T> implements MyList{
             }
             itemToRemove = current.next.data;
             // we update the current element by stepping over the removed item:
-            // current -> itemToRemove -> next 
+            // current -> itemToRemove -> next
             current.next = current.next.next;
         }
         // update the size
