@@ -1,6 +1,6 @@
 # ADS2
 ## MyArrayList
-## ArrayList data structure allows us to dynamically change and modify the array content. It is very useful when working with unstable and unpredictable data\n
+### ArrayList data structure allows us to dynamically change and modify the array content. It is very useful when working with unstable and unpredictable data\n
 '''
 public void increaseBuffer(){
         T[] newArr = (T[]) new Object[arr.length*2];
