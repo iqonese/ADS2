@@ -56,7 +56,27 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public Object remove(int index) {
-        return null;
+        checkIndex(index);
+        T itemToRemove;
+        if (index == 0) {
+            // if index is 0, it means we want to shift the head
+            itemToRemove = head.data;
+            // element at index 1 becomes the head
+            head = head.next;
+        } else {
+            Node<T> current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            itemToRemove = current.next.data;
+            // we update the current element by stepping over the removed item:
+            // current -> itemToRemove -> next 
+            current.next = current.next.next;
+        }
+        // update the size
+        size--;
+        // return the removed item
+        return itemToRemove;
     }
 
     @Override
