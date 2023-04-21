@@ -73,7 +73,20 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        // initial index value is set to 0
+        int index = 0;
+        Node<T> current  = head;
+        while(current != null) {
+            if (current.data.equals(o)) {
+                // if the current value equals Object o, index is instantly returned
+                return index;
+            }
+            // index is concurrent with current
+            current = current.next;
+            index ++;
+        }
+        // default return
+        return -1;
     }
 
     @Override
@@ -91,7 +104,11 @@ public class MyLinkedList<T> implements MyList{
         }
         return index;
     }
-
+    public void checkIndex(int index){
+        if(index < 0 || index>=size){
+            throw new IndexOutOfBoundsException();
+        }
+    }
     @Override
     public void sort() {
 
