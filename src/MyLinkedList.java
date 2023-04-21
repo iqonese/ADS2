@@ -1,5 +1,4 @@
 public class MyLinkedList<T> implements MyList{
-
     // head is the starting instance of MyLinkedList
     private Node<T> head;
     private int size;
@@ -42,11 +41,30 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public void add(Object item) {
+        // new instances of Linked List list are added to the end of the existing list
+        // so we provide the size of the list to index parameter
+        add((T) item, size);
+
     }
 
-    @Override
-    public void add(Object item, int index) {
 
+    public void add(Object item, int index) {
+        checkIndex(index);
+        Node<T> newNode = new Node<>((T) item);
+        if (index == 0) {
+            // new head
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node<T> current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+        // increment the size
+        size++;
     }
 
     @Override
