@@ -82,15 +82,7 @@ public class MyArrayList<T> implements MyList {
 
 
     public int lastIndexOf(Object o) {
-        // initialize it with -1 to prevent errors
-        // each time we meet the desired outcome, we keep updating temp and in the end return it
-        int temp = -1;
-        for (int i = 0; i < size; i++) {
-            if (arr[i] == o) {
-                temp = i;
-            }
-        }
-        return temp;
+        return 0;
     }
 
 
