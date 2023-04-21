@@ -61,7 +61,9 @@ public class MyLinkedList<T> implements MyList{
 
     @Override
     public void clear() {
-
+        // reset the list
+        head = null;
+        size = 0;
     }
 
     @Override
@@ -82,7 +84,6 @@ public class MyLinkedList<T> implements MyList{
         Node<T> current = head;
         while(current != null) {
             if (current.data.equals(o)) {
-
                 index = i;
             }
             current = current.next;
